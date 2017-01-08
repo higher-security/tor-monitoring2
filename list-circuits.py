@@ -1,5 +1,8 @@
 from stem import CircStatus
 from stem.control import Controller
+import geoip2.database
+
+reader = geoip2.database.Reader('/root/docs/GeoLite2-City.mmdb')
 
 with Controller.from_port(port = 9051) as controller:
     controller.authenticate()
@@ -17,4 +20,7 @@ with Controller.from_port(port = 9051) as controller:
 
         desc = controller.get_network_status(fingerprint, None)
         address = desc.address if desc else 'unknown'
-        print(" %s- %s (%s, %s)" % (div, fingerprint, nickname, address))
+        response = reader.city(address)
+        print(" %s- %s (%s, %s,%s,%s, ( %s, %s)" % (div, fingerprint, nickname, address,response.country.iso_code,str(response.country.name),str(response.location.longitude), str(response.location.latitude)     ))
+        # print', '+str(response.city.name)+', ('
+
