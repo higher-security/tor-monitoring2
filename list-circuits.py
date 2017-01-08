@@ -21,6 +21,6 @@ with Controller.from_port(port = 9051) as controller:
         desc = controller.get_network_status(fingerprint, None)
         address = desc.address if desc else 'unknown'
         response = reader.city(address)
-        print(" %s- %s (%s, %s,%s,%s, ( %s, %s)" % (div, fingerprint, nickname, address,response.country.iso_code,str(response.country.name),str(response.location.longitude), str(response.location.latitude)     ))
+        print(" %s- %s (%s, %s, %s, ( %s, %s )" % (div, fingerprint, nickname, address,str(response.country.name),str(response.location.latitude), str(response.location.longitude)     ))
         # print', '+str(response.city.name)+', ('
 
