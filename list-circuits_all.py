@@ -11,8 +11,7 @@ with Controller.from_port(port = 9051) as controller:
     controller.authenticate()
 
     for circ in sorted(controller.get_circuits()):
-        if circ.status != CircStatus.BUILT:
-            continue
+        continue
 
     print("")
     print("Circuit %s (%s)" % (circ.id, circ.purpose))
