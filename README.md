@@ -1,4 +1,4 @@
 # Overview
 
-Simple pieces of code to monitor and alter tor circuits
+Simple code to monitor and alter tor circuits
 

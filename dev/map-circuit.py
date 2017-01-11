@@ -74,7 +74,7 @@ with Controller.from_port(port = 9051) as controller:
                     circuit_lat.append(response.location.latitude)
                     circuit_lon.append(response.location.longitude)
             elif l.startswith("zoom:"):
-                string="zoom: 7 , \n"
+                string="zoom: 4 , \n"
                 output.write(string)
             elif l.startswith("center:"):
                 output.write("{}\n".format(l))
