@@ -1,0 +1,51 @@
+<html>
+<head>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+<meta charset="utf-8">
+
+<title>Google Maps Multiple Markers</title>
+<script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
+</head>
+<body>
+<div id="map" style="height: 100%; width: 100%;">
+</div>
+<script type="text/javascript">
+var locations = [
+['Switzerland', 46.5362, 6.6589, 1 ] ,
+['France', 47.1814, -1.5497, 1 ] ,
+
+['Italy', 46.4907, 11.3398, 1 ] ,
+
+['United States', 34.0494, -118.2641, 1 ] ,
+['Switzerland', 46.5362, 6.6589, 1 ] ,
+];
+
+var map = new google.maps.Map(document.getElementById('map'), {
+center: new google.maps.LatLng(0,0),
+center: new google.maps.LatLng(42.5738333333,-36.158) , 
+zoom: 7 , 
+mapTypeId: google.maps.MapTypeId.HYBRID
+//mapTypeId: google.maps.MapTypeId.ROADMAP
+});
+var markerBounds = new google.maps.LatLngBounds();
+var infowindow = new google.maps.InfoWindow();
+
+var marker, i;
+
+for (i = 0; i < locations.length; i++) {
+marker = new google.maps.Marker({
+position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+map: map
+});
+
+google.maps.event.addListener(marker, 'click', (function(marker, i) {
+return function() {
+infowindow.setContent(locations[i][0]);
+markerBounds.extend(locations);
+infowindow.open(map, marker);
+}
+})(marker, i));
+}
+</script>
+</body>
+</html>

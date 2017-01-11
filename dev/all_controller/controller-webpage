@@ -1,0 +1,95 @@
+Controller - General controller class intended for direct use
+  | |- from_port - Provides a Controller based on a port connection.
+  | +- from_socket_file - Provides a Controller based on a socket file connectio
+n.
+  |
+authenticate - authenticates this controller with tor
+reconnect - reconnects and authenticates to socket
+  |
+get_info - issues a GETINFO query for a parameter
+get_version - provides our tor version
+get_exit_policy - provides our exit policy
+get_ports - provides the local ports where tor is listening for connections
+get_listeners - provides the addresses and ports where tor is listening for
+ connections
+get_accounting_stats - provides stats related to relaying limits
+get_protocolinfo - information about the controller interface
+get_user - provides the user tor is running as
+get_pid - provides the pid of our tor process
+is_user_traffic_allowed - checks if we send or receive direct user traffic
+  |
+get_microdescriptor - querying the microdescriptor for a relay
+get_microdescriptors - provides all currently available microdescriptors
+get_server_descriptor - querying the server descriptor for a relay
+get_server_descriptors - provides all currently available server descriptor
+s
+get_network_status - querying the router status entry for a relay
+get_network_statuses - provides all preently available router status entrie
+s
+get_hidden_service_descriptor - queries the given hidden service descriptor
+  |
+get_conf - gets the value of a configuration option
+get_conf_map - gets the values of multiple configuration options
+is_set - determines if an option differs from its default
+set_conf - sets the value of a configuration option
+reset_conf - reverts configuration options to their default values
+set_options - sets or resets the values of multiple configuration options
+  |
+get_hidden_service_conf - provides our hidden service configuration
+set_hidden_service_conf - sets our hidden service configuration
+create_hidden_service - creates a new hidden service or adds a new port
+remove_hidden_service - removes a hidden service or drops a port
+  |
+list_ephemeral_hidden_services - list ephemeral hidden serivces
+create_ephemeral_hidden_service - create a new ephemeral hidden service
+remove_ephemeral_hidden_service - removes an ephemeral hidden service
+  |
+add_event_listener - attaches an event listener to be notified of tor event
+s
+remove_event_listener - removes a listener so it isn't notified of further
+events
+  |
+is_caching_enabled - true if the controller has enabled caching
+set_caching - enables or disables caching
+clear_cache - clears any cached results
+  |
+load_conf - loads configuration information as if it was in the torrc
+save_conf - saves configuration information to the torrc
+  |
+is_feature_enabled - checks if a given controller feature is enabled
+enable_feature - enables a controller feature that has been disabled by def
+ault
+  |
+get_circuit - provides an active circuit
+get_circuits - provides a list of active circuits
+new_circuit - create new circuits
+extend_circuit - create new circuits and extend existing ones
+repurpose_circuit - change a circuit's purpose
+close_circuit - close a circuit
+  |
+get_streams - provides a list of active streams
+attach_stream - attach a stream to a circuit
+close_stream - close a stream
+  |
+signal - sends a signal to the tor client
+is_newnym_available - true if tor would currently accept a NEWNYM signal
+get_newnym_wait - seconds until tor would accept a NEWNYM signal
+get_effective_rate - provides our effective relaying rate limit
+is_geoip_unavailable - true if we've discovered our geoip db to be unavaila
+ble
+map_address - maps one address to another such that connections to the orig
+inal are replaced with the other
+  +- drop_guards - drops our set of guard relays and picks a new set
+
+BaseController - Base controller class asynchronous message handling
+msg - communicates with the tor process
+is_alive - reports if our connection to tor is open or closed
+is_localhost - returns if the connection is for the local system or not
+connection_time - time when we last connected or disconnected
+is_authenticated - checks if we're authenticated to tor
+connect - connects or reconnects to tor
+close - shuts down our connection to the tor process
+get_socket - provides the socket used for control communication
+get_latest_heartbeat - timestamp for when we last heard from tor
+add_status_listener - notifies a callback of changes in our status
+remove_status_listener - prevents further notification of status changes

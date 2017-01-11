@@ -1,0 +1,94 @@
+Controller
+  | |- from_port
+  | +- from_socket_file
+  |
+authenticate
+reconnect
+  |
+get_info
+get_version
+get_exit_policy
+get_ports
+get_listeners
+ connections
+get_accounting_stats
+get_protocolinfo
+get_user
+get_pid
+is_user_traffic_allowed
+  |
+get_microdescriptor
+get_microdescriptors
+get_server_descriptor
+get_server_descriptors
+s
+get_network_status
+get_network_statuses
+s
+get_hidden_service_descriptor
+  |
+get_conf
+get_conf_map
+is_set
+set_conf
+reset_conf
+set_options
+  |
+get_hidden_service_conf
+set_hidden_service_conf
+create_hidden_service
+remove_hidden_service
+  |
+list_ephemeral_hidden_services
+create_ephemeral_hidden_service
+remove_ephemeral_hidden_service
+  |
+add_event_listener
+s
+remove_event_listener
+events
+  |
+is_caching_enabled
+set_caching
+clear_cache
+  |
+load_conf
+save_conf
+  |
+is_feature_enabled
+enable_feature
+ault
+  |
+get_circuit
+get_circuits
+new_circuit
+extend_circuit
+repurpose_circuit
+close_circuit
+  |
+get_streams
+attach_stream
+close_stream
+  |
+signal
+is_newnym_available
+get_newnym_wait
+get_effective_rate
+is_geoip_unavailable
+ble
+map_address
+inal are replaced with the other
+  +- drop_guards
+
+BaseController
+msg
+is_alive
+is_localhost
+connection_time
+is_authenticated
+connect
+close
+get_socket
+get_latest_heartbeat
+add_status_listener
+remove_status_listener
